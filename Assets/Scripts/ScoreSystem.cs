@@ -13,13 +13,17 @@ public class ScoreSystem : MonoBehaviour
 
     public void Awake()
     {
-        PlayerPrefs.GetInt("highScore");
-        PlayerPrefs.GetInt("score");
-        PlayerPrefs.GetInt("lives");
+        instance = this;
+
     }
     public void Start()
     {
         score = PlayerPrefs.GetInt("score");
+
+        //PlayerPrefs.GetInt("highScore");
+        //PlayerPrefs.GetInt("score");
+        //PlayerPrefs.GetInt("lives");
+
     }
     public void Update()
     {
@@ -57,5 +61,10 @@ public class ScoreSystem : MonoBehaviour
         {
             LevelManager.instance.ChangeToLoadingScreen();
         }
+    }
+
+    public void AddCherryPoints()
+    {
+        PlayerPrefs.SetInt("score", score = score + 10);
     }
 }

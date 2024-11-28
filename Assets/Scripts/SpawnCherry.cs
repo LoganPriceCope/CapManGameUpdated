@@ -25,20 +25,18 @@ public class SpawnCherry : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-         //PlayerPrefs.SetInt("score", ScoreSystem.instance.score++);
-        /*  for (int i = 0; i < 11; i++)
-          {
-              PlayerPrefs.SetInt("score", ScoreSystem.instance.score++);
-          }
-        */
-        cherryExist = false;
-        Destroy(transform.gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            ScoreSystem.instance.AddCherryPoints();
+            cherryExist = false;
+            Destroy(transform.gameObject);
+        }
     }
 
     
     public void GenerateCherry()
     {
-        digit = Random.Range(0, 10000);
+        digit = Random.Range(0, 20000);
         if (digit <= 1)
         {
             cherryExist = true;

@@ -10,9 +10,18 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject playerModel;
 
-    public bool left = true;
+    public static PlayerMovement instance;
 
-    int speed;
+    public bool left = true;
+    public bool up = false;
+
+    public int speed;
+    public float boost = 1;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -22,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // move forward always
-        rb.linearVelocity = transform.forward * speed;
+        rb.linearVelocity = transform.forward * speed * boost;
 
         transform.rotation = Quaternion.Euler(value);
         if(left == true)
