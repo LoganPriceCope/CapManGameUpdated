@@ -34,13 +34,21 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = transform.forward * speed * boost;
 
         transform.rotation = Quaternion.Euler(value);
-        if(left == true)
+        if(left == true && up == false)
         {
             playerModel.transform.rotation = Quaternion.Euler(-90f, 90f, 90f);
         }
-        else
+        else if(left == false && up == false)
         {
             playerModel.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+        }
+        else if (left == false && up == true)
+        {
+            playerModel.transform.rotation = Quaternion.Euler(90f, 180f, 270f);
+        }
+        else if (left == true && up == true)
+        {
+            playerModel.transform.rotation = Quaternion.Euler(90f, 180f, 90f);
         }
     }
 
@@ -49,22 +57,28 @@ public class PlayerMovement : MonoBehaviour
         speed = 4;
         value = new Vector3(0, -90, 0);
         left = true;
+        up = false;
     }
     public void ChangeRight()
     {
         speed = 4;
         value = new Vector3(0, -270, 0);
         left = false;
+        up = false;
     }
     public void ChangeUp()
     {
         speed = 4;
         value = new Vector3(0, -360, 0);
+        left = false;
+        up = true;
     }
     public void ChangeDown()
     {
         speed = 4;
         value = new Vector3(0, -180, 0);
+        left = true;
+        up = true;
     }
 }
 
