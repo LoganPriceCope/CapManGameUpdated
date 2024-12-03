@@ -1,5 +1,4 @@
-using Microsoft.Unity.VisualStudio.Editor;
-using System;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
